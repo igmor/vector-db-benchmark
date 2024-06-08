@@ -11,6 +11,7 @@ from dataset_reader.ann_h5_reader import AnnH5Reader
 from dataset_reader.base_reader import BaseReader
 from dataset_reader.json_reader import JSONReader
 from dataset_reader.sparse_reader import SparseReader
+from dataset_reader.ftbin_reader import BinCompoundReader
 
 
 @dataclass
@@ -31,6 +32,7 @@ READER_TYPE = {
     "jsonl": JSONReader,
     "tar": AnnCompoundReader,
     "sparse": SparseReader,
+    "bin": BinCompoundReader
 }
 
 

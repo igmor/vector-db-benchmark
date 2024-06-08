@@ -24,6 +24,14 @@
     "link": "https://storage.googleapis.com/ann-filtered-benchmark/datasets/yandex_t2i_gt_100k.tgz"
   },
   {
+    "name": "yandex-t2i-gt-1M",
+    "vector_size": 96,
+    "distance": "l2",
+    "type": "bin",
+    "path": "yandex-1B-96-angular/yandex_t2i_gt_1M",
+    "link": "https://storage.googleapis.com/ann-filtered-benchmark/datasets/yandex_t2i_gt_1M.tgz"
+  },  
+  {
     "name": "deep-image-96-angular",
     "vector_size": 96,
     "distance": "cosine",
