@@ -13,9 +13,10 @@ class JSONReader(BaseReader):
     QUERIES_FILE = "queries.jsonl"
     NEIGHBOURS_FILE = "neighbours.jsonl"
 
-    def __init__(self, path: Path, normalize=False):
+    def __init__(self, path: Path, normalize=False, dataset_offset=0):
         self.path = path
         self.normalize = normalize
+        self.dataset_offset = dataset_offset
 
     def read_payloads(self) -> Iterator[dict]:
         if not (self.path / self.PAYLOADS_FILE).exists():

@@ -32,7 +32,7 @@ class MilvusSearcher(BaseSearcher):
         cls.collection = Collection(MILVUS_COLLECTION_NAME, using=MILVUS_DEFAULT_ALIAS)
         cls.search_params = search_params
         cls.distance = DISTANCE_MAPPING[distance]
-
+        
     @classmethod
     def get_mp_start_method(cls):
         return "forkserver" if "forkserver" in mp.get_all_start_methods() else "spawn"

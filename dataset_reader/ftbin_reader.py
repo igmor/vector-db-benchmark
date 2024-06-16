@@ -12,13 +12,15 @@ class BinCompoundReader(JSONReader):
     A reader created specifically to read the format ftbin
     """
 
-    VECTORS_FILE = "base.10M.fbin"
+    VECTORS_FILE = "base.1B.fbin"
     QUERIES_FILE = "query.public.10K.fbin"
     GROUNDTRUTH_FILE = "groundtruth.public.10K.ibin"
 
     def read_vectors(self) -> Iterator[List[float]]:
         with open(self.path / self.VECTORS_FILE) as vectors_fp:
             nvecs, dim = np.fromfile(vectors_fp, count=2, dtype=np.int32)
+            if self.dataset_offset > 0:
+                vectors_fp.seek(self.dataset_offset * dim * 4, 1)
             for i in range(nvecs):
                 vector = np.fromfile(
                     vectors_fp, count=dim, dtype=np.float32)

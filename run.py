@@ -23,6 +23,7 @@ def run(
     skip_if_exists: bool = False,
     exit_on_error: bool = True,
     timeout: float = 86400.0,
+    dataset_offset: int = 0,
 ):
     """
     Example:
@@ -57,7 +58,7 @@ def run(
 
                 with stopit.ThreadingTimeout(timeout) as tt:
                     client.run_experiment(
-                        dataset, skip_upload, skip_search, skip_if_exists
+                        dataset, skip_upload, skip_search, skip_if_exists, dataset_offset
                     )
                 client.delete_client()
 

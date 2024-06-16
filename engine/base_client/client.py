@@ -84,12 +84,13 @@ class BaseClient:
         skip_upload: bool = False,
         skip_search: bool = False,
         skip_if_exists: bool = True,
+        dataset_offset: int = 0,
     ):
         execution_params = self.configurator.execution_params(
             distance=dataset.config.distance, vector_size=dataset.config.vector_size
         )
 
-        reader = dataset.get_reader(execution_params.get("normalize", False))
+        reader = dataset.get_reader(execution_params.get("normalize", False), dataset_offset)
 
         if skip_if_exists:
             glob_pattern = f"{self.name}-{dataset.config.name}-search-*-*.json"
