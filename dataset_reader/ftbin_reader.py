@@ -20,7 +20,7 @@ class BinCompoundReader(JSONReader):
         with open(self.path / self.VECTORS_FILE) as vectors_fp:
             nvecs, dim = np.fromfile(vectors_fp, count=2, dtype=np.int32)
             if self.dataset_offset > 0:
-                vectors_fp.seek(self.dataset_offset * dim * 4, 1)
+                vectors_fp.seek(self.dataset_offset * dim * 4 + 8)
             for i in range(nvecs):
                 vector = np.fromfile(
                     vectors_fp, count=dim, dtype=np.float32)

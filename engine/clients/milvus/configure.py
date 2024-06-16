@@ -41,6 +41,8 @@ class MilvusConfigurator(BaseConfigurator):
         print("established connection")
 
     def clean(self):
+        if "recreate" in self.collection_params and not self.collection_params["recreate"]:
+            return
         try:
             utility.drop_collection(MILVUS_COLLECTION_NAME, using=MILVUS_DEFAULT_ALIAS)
             utility.has_collection(MILVUS_COLLECTION_NAME, using=MILVUS_DEFAULT_ALIAS)
@@ -48,6 +50,9 @@ class MilvusConfigurator(BaseConfigurator):
             pass
 
     def recreate(self, dataset: Dataset, collection_params):
+        if "recreate" in self.collection_params and not self.collection_params["recreate"]:
+            return
+
         idx = FieldSchema(
             name="id",
             dtype=DataType.INT64,

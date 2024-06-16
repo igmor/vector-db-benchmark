@@ -3,9 +3,9 @@
     "name": "milvus-on-disk-default",
     "engine": "milvus",
     "connection_params": {},
-    "collection_params": {},
+    "collection_params": {"recreate": false},
     "search_params": [
-      { "parallel": 1, "config": { "search_list": 75 } }
+      { "parallel": 1, "config": { "search_list": 100 } }
     ],
     "upload_params": { "parallel": 4, "index_type": "DISKANN", "index_params": {  } }
   }
